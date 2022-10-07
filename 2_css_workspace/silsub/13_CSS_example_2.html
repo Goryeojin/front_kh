@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 활용 2 : 사진 게시판</title>
+    <style>
+        .pic{
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="../resources/css/gallery.css">
+</head>
+<body>
+    <h1>CSS 활용 2 : 사진 게시판</h1>
+
+    <div id="gallery">
+        <!-- ul>(li>img.small[width=120px height=90px]+img.pic)*6 -->
+        <ul>
+            <li>
+                <img src="../resources/image/flower1.PNG" alt="꽃1" class="small" width="120px" height="90px">
+                <img src="../resources/image/flower1.PNG" alt="꽃1" class="pic">
+            </li>
+            <li>
+                <img src="../resources/image/flower2.PNG" alt="꽃2" class="small" width="120px" height="90px">
+                <img src="../resources/image/flower2.PNG" alt="꽃2" class="pic">
+            </li>
+            <li>
+                <img src="../resources/image/flower3.PNG" alt="꽃3" class="small" width="120px" height="90px">
+                <img src="../resources/image/flower3.PNG" alt="꽃3" class="pic">
+            </li>
+            <li>
+                <img src="../resources/image/flower4.PNG" alt="꽃4" class="small" width="120px" height="90px">
+                <img src="../resources/image/flower4.PNG" alt="꽃4" class="pic">
+            </li>
+            <li>
+                <img src="../resources/image/flower5.PNG" alt="꽃5" class="small" width="120px" height="90px">
+                <img src="../resources/image/flower5.PNG" alt="꽃5" class="pic">
+            </li>
+            <li>
+                <img src="../resources/image/bono.jpg" alt="보노보노" class="small" width="120px" height="90px">
+                <img src="../resources/image/bono.jpg" alt="보노보노" class="pic">
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

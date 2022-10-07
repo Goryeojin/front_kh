@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>화면구조잡기 끝</title>
+    <style>
+        div{
+            border : 1px solid red;
+            box-sizing : border-box;
+        }
+        /* 전체를 감싸는 div */
+        .wrap{
+            width: 1000px;
+            height: 800px; /* box-sizing 속성으로
+            보더 영역까지의 가로 1000px 세로 800px */
+            margin: auto; /* 좌우여백만 자동. 위아래는 px로 고정시키기 */
+            /* margin-right: auto;
+            margin-left: auto; */
+        }
+        /* 큰 4등분 속성 */
+        .wrap>div{ width: 100%;}
+        #header, #footer { height: 20%;} /* 각각 160px */
+        #navigator { height: 5%;} /* 40px */
+        #content { height: 55%;}
+
+        /* 세부 div 속성 */
+        /* 공통속성 */
+        #header>div, #content>div{
+            height : 100%;
+            float : left;
+        }
+        /* 각각의 width값 정하기 */
+        #header_1 { width: 20%;}
+        #header_2 { width: 65%;}
+        #header_3 { width: 15%;}
+
+        #content_1 { width: 15%;}
+        #content_2 { width: 60%;}
+        #content_3 { width: 25%;}
+
+    </style>
+</head>
+<body>
+    <!--
+        .wrap>(#header>#header_$*3)+#navigator+(#content>#content_$*3)
+        +#footer
+    -->
+    <div class="wrap">
+        <div id="header">
+            <div id="header_1"></div> <!-- 20 -->
+            <div id="header_2"></div> <!-- 65 -->
+            <div id="header_3"></div> <!-- 15 -->
+        </div>
+        <div id="navigator"></div>
+        <div id="content">
+            <div id="content_1"></div> <!-- 15 -->
+            <div id="content_2"></div> <!-- 60 -->
+            <div id="content_3"></div> <!-- 25 -->
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

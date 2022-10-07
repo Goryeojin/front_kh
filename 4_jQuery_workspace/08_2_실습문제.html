@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>문제를 풀어보자!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <fieldset>
+        <legend>문제 1</legend>
+        <h3>input 태그에 값을 입력하고 버튼을 클릭하였을 때, 값이 숫자인지 아닌지 출력해 주세요.</h3>
+        (값이 숫자라면 : "숫자입니다". 숫자가 아니면 "숫자가 아닙니다."를 alert로 출력) <br><br>
+        <input type="text" id="q01_num"> <button onclick="answer01();">판별</button>
+    </fieldset>
+
+    <script>
+        function answer01(){
+            
+            var q = $('#q01_num').val();
+            console.log(typeof(q));
+            console.dir(q);
+
+            if(q){
+                console.log('트루');
+            }
+            else{
+                console.log('펄스');
+            }
+
+            // 0, false, null, NaN, '', undefined ==> boolean 으로 사용될 때 false
+            if(isNaN(q) || (q == false && q != 0)){ // 0
+                alert('숫자가 아닙니다.');
+            }
+            else{
+                alert('숫자입니다.');
+            }
+            
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 2</legend>
+        <h3>1~20 사이의 랜덤한 숫자를 생성해서 input 태그 안에 입력해주세요.</h3>
+        랜덤 : <input type="text" id="q02"> <button onclick="answer02();">생성</button>
+    </fieldset>
+
+    <script>
+        function answer02(){
+
+            $('#q02').val(parseInt(Math.random() * 20 + 1));
+        }
+    </script>
+
+    <fieldset>
+        <legend>문제 3</legend>
+        <h3>전체선택 버튼을 클릭하면 체크항목을 모두 체크하거나 모두 해제해 주세요.</h3>
+        <!-- <input type="checkbox" name="all" id="all" onclick="answer03();"> 전체선택 -->
+        <input type="checkbox" name="all" id="all" onclick="answer03(this.checked);"> 전체선택
+        <br>
+        <input type="checkbox" name="check" id=""> Java
+        <br>
+        <input type="checkbox" name="check" id=""> DataBase
+        <br>
+        <input type="checkbox" name="check" id=""> Web
+        <br>
+    </fieldset>
+
+    <script>
+        /*
+        function answer03(){
+            var check = $('#all');
+            
+            if(check[0].checked){
+                check.siblings('input[name=check]').attr('checked', true);
+            }
+            else{
+                check.siblings('input[name=check]').attr('checked', false);
+            }
+        }
+        */
+        function answer03(ch){
+            if(ch){
+                $('fieldset').children('input[name=check]').prop('checked', true);
+            }
+            else{
+                $('fieldset').children('input[name=check]').prop('checked', false);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

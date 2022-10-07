@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>푸터입니다</title>
+    <style>
+        div{
+            box-sizing: border-box;
+        }
+        /* 전체를 감싸는 div 속성 */
+        #footer{ /* 작업을 위한 임시스타일 부여. 안가져감 */
+            width: 1000px;
+            height: 160px;
+        }
+        /* -------------------------------------------------------- */
+
+        /* 세부속성 */
+        #footer_1{
+            width: 100%;
+            height: 20%;
+            background-color: rgb(233, 233, 233);
+        }
+        #footer_2{
+            width: 100%;
+            height: 80%;
+        }
+        /* footer_1의 a태그 속성 */
+        #footer_1>a{
+            text-decoration: none;
+            color: rgb(43, 43, 43);
+            font-weight: 550;
+            margin : 15px;
+            vertical-align: middle; /* 수직 구조에서 가운데로 오게끔 해주는 속성 */
+        }
+        /* p태그에 대한 세부적인 속성들 */
+        #footer_2>p{
+            width: 100%;
+            margin: 0; /* p태그 특성상 두 개의 margin이 위아래에 기본적으로 들어가있음 */
+            box-sizing: border-box; /* p태그의 테두리까지를 부모의 20, 80%까지 지정해야 부모 영역 안에 잘 담김 */
+            font-size: 12px; /* 폰트사이즈 줄이기 */
+        }
+        #p1{
+            height: 80%;
+            padding-top: 5px;
+            padding-left: 10px;
+        }
+        #p2{
+            height: 20%;
+            font-weight: 300;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="footer">
+        <div id="footer_1">
+            <a href="#">이용약관</a> |
+            <a href="#">개인정보취급방침</a> |
+            <a href="#">인재채용문의</a> |
+            <a href="#">고객센터</a> |
+        </div>
+        <div id="footer_2">
+            <p id="p1">
+                강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩<br>
+                강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩<br>
+                강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩<br>
+                종로지원 : 서울특별시 중구 남대문로  120 대일빌딩<br>
+                당산지원 : 서울특별시 영등포구 선유동2로 57 이레빌딩
+            </p>
+            <p id="p2">
+                Copyfight @ 1998-2021 KH Information Educational Institute All Right Reserved
+            </p><!-- p태그도 블럭요소이기 때문에 영역이 나눠진다. -->
+        </div>
+    </div>
+</body>
+</html>

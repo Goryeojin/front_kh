@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h3>체크박스를 만들자!</h3>
+    <div class="wrapper">
+
+        <div>
+            <input type="checkbox" class="batch" id="all"><label>전체</label>
+            <input type="checkbox" class="batch" id="java"><label>자바</label>
+            <input type="checkbox" class="batch" id="sec"><label>보안</label>
+        </div>
+        <hr>
+        <div>
+            <input type="checkbox" class="java chk">자바<div>Java</div>
+            <input type="checkbox" class="sec chk">보안<div>OS</div>
+            <input type="checkbox" class="java chk">자바<div>Oracle</div>
+            <input type="checkbox" class="sec chk">보안<div>Network</div>
+            <input type="checkbox" class="java chk">자바<div>Web</div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $('.batch').on('change', function(){
+
+                if(!$(this).prop('checked')){
+                    $('#all').prop('checked', false);
+                }
+            })
+
+            $('#all').on('change', function(){
+
+                var $all = $('#all').prop('checked');
+
+                if($all){
+                    $('.chk').prop('checked', true);
+                    $('.batch').prop('checked', true);
+                }
+                else{
+                    $('.chk').prop('checked', false);
+                    $('.batch').prop('checked', false);
+                }
+
+            })
+
+
+            $('#java').on('change', function(){
+
+                var $java = $('#java').prop('checked'); // getter 처럼 사용가능
+
+                if($java){
+                    $('.java').prop('checked', true);
+                }
+                else{
+                    $('.java').prop('checked', false);
+
+                }
+            })
+
+            $('#sec').on('change', function(){
+
+                var $sec = $('#sec').prop('checked'); // getter 처럼 사용가능
+
+                if($sec){
+                    $('.sec').prop('checked', true);
+                }
+                else{
+                    $('.sec').prop('checked', false);
+
+                }
+            })
+        })
+    </script>
+</body>
+</html>

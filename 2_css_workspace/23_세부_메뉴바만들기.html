@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메뉴바 만들기</title>
+    <style>
+        div{
+            box-sizing: border-box;
+        }
+        #navigator{
+            width: 1000px;
+            height: 40px;
+        }
+        #navi{
+            list-style: none;
+            margin: 0px; /* ul요소는 기본적으로 위, 아래 margin이 존재한다. */
+            padding: 0px; /* 심지어 padding도 있다 */
+            height: 100%;
+        }
+        #navi>li{
+            float:left;
+            width: 17%;
+            text-align: center;
+            height: 100%;
+        }
+        #navi a{
+            text-decoration: none;
+            color: steelblue;
+            font-weight: 800;
+            width: 100%;
+            height: 100%; /* a태그는 인라인요소기 때문에 width, height 속성이 적용 X */
+            display : block; /* 인라인 요소를 블럭요소로 바꿔줌 */
+            /*vertical-align: middle;*/ /* vertical-align : middle은 블럭요소에서 죽었다깨나도 X */
+            line-height: 35px; /* 줄간격 속성 px / % / em*/
+        }
+        #navi a:hover{
+            color: rgb(14, 105, 180);
+            font-size : 17px;
+        }
+        #navi>li>ul{
+            list-style-type: none;
+            padding: 0px;
+            display: none; /* 평소에 숨겨져있다가 마우스가 올라가는 순간 펼쳐지는 효과 1단계 */
+
+        }
+        #navi>li>a:hover+ul{
+            display: block; /* 2단계 */
+        }
+        #navi>li>ul:hover{
+            display: block; /* 3단계 */
+        }
+        #navi>li>ul a{font-size: 11px;}
+        #navi>li>ul a:hover{font-size: 14px;}
+    </style>
+</head>
+<body>
+    <div id="navigator">
+        <ul id="navi">
+            <li><a href="">Java</a></li>
+            <li><a href="">Oracle</a></li>
+            <li>
+                <a href="">Front-End</a>
+                <ul>
+                    <li><a href="">HTML</a></li>
+                    <li><a href="">CSS</a></li>
+                    <li><a href="">JavaScript</a></li>
+                    <li><a href="">jQuery</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Server</a>
+                <ul>
+                    <li><a href="">JDBC</a></li>
+                    <li><a href="">Servlet</a></li>
+                    <li><a href="">JSP</a></li>
+                    <li><a href="">Ajax</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Framework</a>
+                <ul>
+                    <li><a href="">MyBatis</a></li>
+                    <li><a href="">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>레이아웃1</title>
+    <style>
+        .size-test{
+            border : 10px solid red;
+        }
+        #test1{
+            width : 400px;
+            height : 200px;
+        }
+        #test2{
+            width : 50%;
+            height: 150px;
+        }
+        .red{background : red;}
+        .yellowgreen{background : yellowgreen;}
+        .salmon{background : salmon;}
+        .skyblue{background: skyblue;}
+        .violet{background: violet;}
+        /* display-test */
+        .display-test{
+            border: 1px solid black;
+            width : 150px;
+            height : 150px; /* inline요소에는 적용 안됨 */
+        }
+        .inline{
+            display : inline;
+        }
+        .inline-block{
+            display : inline-block;
+        }
+        .block{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        블럭요소 : 한 줄 단위로 영역이 잡힘 / 자동으로 줄 바꿈 발생 (div, p, pre, h1~h6)
+        인라인요소 : content부분만 영역이 잡힘 / 옆으로 배치 됨 (span, label, input)
+     -->
+
+     <h1>레이아웃 관련 스타일</h1>
+
+     <h3>width, height</h3>
+     <p>
+         content 영역의 크기를 조절하는 속성
+     </p>
+
+     <!-- (h4+div#test$.size-test)*2 -->
+    <h4>고정 크기 (px) </h4>
+    <div id="test1" class="size-test"></div>
+    <h4>가변 크기 (%) </h4>
+    <div id="test2" class="size-test"></div>
+
+    <hr>
+
+    <h3>display : 화면 배치 방법 변경</h3>
+    <p>
+        블럭요소와 인라인요소의 속성을 변경해서 배치 방식을 변경
+    </p>
+    <pre>
+        [ 표현법 ]
+        선택자 {
+            display : inline/block/inline-block; (hidden)
+        }
+    </pre>
+
+    <!-- 기존의 블럭요소인 div를 인라인요소로 바꿔보기 -->
+    <h4>display:inline</h4>
+
+    <!-- Before -->
+    <!-- div.display-test*5 -->
+    <div class="display-test red">첫번째영역</div>
+    <div class="display-test yellowgreen">두번째영역</div>
+    <div class="display-test salmon">세번째영역</div>
+    <div class="display-test skyblue">네번째영역</div>
+    <div class="display-test violet">다섯번째영역</div>
+
+    <br>
+
+    <!-- After -->
+    <div class="display-test inline red">첫번째영역</div>
+    <div class="display-test inline yellowgreen">두번째영역</div>
+    <div class="display-test inline salmon">세번째영역</div>
+    <div class="display-test inline skyblue">네번째영역</div>
+    <div class="display-test inline violet">다섯번째영역</div>
+
+    <br>
+
+    <b>display : inline;속성을 부여하면 width, height속성이 적용되지 않음</b>
+    <br><br><br>
+
+    <!-- inline요소로 배치는 하나, width, height속성을 유지되게끔 하고싶다. -->
+    <h4>display : inline-block</h4>
+
+    <!-- After -->
+    <div class="display-test inline-block red">첫번째영역</div>
+    <div class="display-test inline-block yellowgreen">두번째영역</div>
+    <div class="display-test inline-block salmon">세번째영역</div>
+    <div class="display-test inline-block skyblue">네번째영역</div>
+    <div class="display-test inline-block violet">다섯번째영역</div>
+
+    <!-- 기존의 인라인 요소인 span을 블럭요소로 바꿔보기 -->
+
+    <h4>diplay : block</h4>
+
+    <!-- Before -->
+
+    <span class="display-test red">첫번째</span>
+    <span class="display-test yellowgreen">두번째</span>
+    <span class="display-test salmon">세번째</span>
+    <span class="display-test skyblue">네번째</span>
+    <span class="display-test violet">마지막</span>
+
+    <br><br>
+
+    <span class="display-test block red">첫번째</span>
+    <span class="display-test block yellowgreen">두번째</span>
+    <span class="display-test block salmon">세번째</span>
+    <span class="display-test block skyblue">네번째</span>
+    <span class="display-test block violet">마지막</span>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>화면구조잡기 끝</title>
+    <style>
+        div{
+            /* border : 1px solid red; */
+            box-sizing : border-box;
+        }
+        /* 전체를 감싸는 div */
+        .wrap{
+            width: 1000px;
+            height: 800px; /* box-sizing 속성으로
+            보더 영역까지의 가로 1000px 세로 800px */
+            margin: auto; /* 좌우여백만 자동. 위아래는 px로 고정시키기 */
+            /* margin-right: auto;
+            margin-left: auto; */
+        }
+        /* 큰 4등분 속성 */
+        .wrap>div{ width: 100%;}
+        #header, #footer { height: 20%;} /* 각각 160px */
+        #navigator { height: 5%;} /* 40px */
+        #content { height: 55%;}
+
+        /* 세부 div 속성 */
+        /* 공통속성 */
+        #header>div, #content>div{
+            height : 100%;
+            float : left;
+        }
+        /* 각각의 width값 정하기 */
+        #header_1 { width: 20%;}
+        #header_2 { width: 65%;}
+        #header_3 { width: 15%;}
+
+        #content_1 { width: 15%;}
+        #content_2 { width: 60%;}
+        #content_3 { width: 25%;}
+
+        /* --------- footer 영역 스타일 속성 시작 ------------ */
+        #footer_1{
+            width: 100%;
+            height: 20%;
+            background-color: rgb(233, 233, 233);
+        }
+        #footer_2{
+            width: 100%;
+            height: 80%;
+        }
+        /* footer_1의 a태그 속성 */
+        #footer_1>a{
+            text-decoration: none;
+            color: rgb(43, 43, 43);
+            font-weight: 550;
+            margin : 15px;
+            vertical-align: middle;
+        }
+        /* p태그에 대한 세부적인 속성들 */
+        #footer_2>p{
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 12px; 
+        }
+        #p1{
+            height: 80%;
+            padding-top: 5px;
+            padding-left: 10px;
+        }
+        #p2{
+            height: 20%;
+            font-weight: 300;
+            text-align: center;
+        }
+        /* --------- footer 영역 스타일 속성 끝 -------------- */
+        /* --------- content_3 영역 스타일 속성 시작 -------------- */
+        /* 1번 */
+        #login_form{
+            width: 100%;
+            height: 30%;
+        }
+        /* 2_1, 2_2번 */
+        #login_form>*{width: 100%;}
+        #login_form_input{height: 80%;}
+        #login_form_etc{height: 20%;}
+        /* 3_1, 3_2번 */
+        #login_form_input>div{
+            height: 100%;
+            float: left;
+        }
+        #login_input_id_pwd{width: 65%;}
+        #login_input_btn{width: 35%;}
+        /* input 태그 늘려주기 */
+        #login_input_id_pwd>input{
+            width: 100%;
+            height: 50%;
+            box-sizing: border-box;
+        }
+        #login_input_btn>input{
+            width: 100%;
+            height: 100%;
+        }
+        #login_form_etc>a{
+            text-decoration: none;
+            color: rgb(92, 78, 78);
+            font-size: 12px;
+            margin: 15px;
+            vertical-align: middle;
+        }
+        /* --------- content_3 영역 스타일 속성 끝 ---------------- */
+        /* --------- header_2 영역 스타일 속성 시작 ---------------- */
+        #header_2{ position: relative;} /* 가져갈거니까 따로 빼놓겠음 */
+        #search_form{
+            width: 70%;
+            height: 20%;
+            position: absolute;
+            /* 1. 공간없이 배치 후, 마진 자동정렬로 위치시키는 방법 */
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            margin: auto;
+            /* 2. %로 정렬하는 방법 */
+	        /* transform: translate(-50%,-50%); */
+	        /* top: 50%; */
+	        /* left: 50%; */
+
+        }
+        /* 검색창 form 내부의 div 속성 */
+        #search_form>div{
+            height: 100%;
+            float: left;
+        }
+        #search_text{width: 85%;}
+        #search_btn{width: 15%;}
+        /* input 태그들 늘려주기 */
+        #search_form input{
+            width: 100%;
+            height: 100%;
+        }
+        /* --------- header_2 영역 스타일 속성 끝 -------------- */
+        /* --------- navigator 영역 스타일 속성 시작 -------------- */
+        #navi{
+            list-style: none;
+            margin: 0px; /* ul요소는 기본적으로 위, 아래 margin이 존재한다. */
+            padding: 0px; /* 심지어 padding도 있다 */
+            height: 100%;
+        }
+        #navi>li{
+            float:left;
+            width: 15%;
+            text-align: center;
+            height: 100%;
+        }
+        #navi a{
+            text-decoration: none;
+            color: steelblue;
+            font-weight: 800;
+            width: 100%;
+            height: 100%; /* a태그는 인라인요소기 때문에 width, height 속성이 적용 X */
+            display : block; /* 인라인 요소를 블럭요소로 바꿔줌 */
+            /*vertical-align: middle;*/ /* vertical-align : middle은 블럭요소에서 죽었다깨나도 X */
+            line-height: 35px; /* 줄간격 속성 px / % / em*/
+            /* 화면 통합 시 이슈 발생 : 메인메뉴의 a태그와 서브메뉴의 ul태그가
+            연결이 미세하게 끊겨있어 발생한 문제 */
+            /* 
+                transform : 애니메이션 효과를 줄 수 있는 속성
+                scale(): 몇 배 확대하겠다.    
+            */
+            transform: scale(1);
+        }
+        #navi a:hover{
+            color: rgb(14, 105, 180);
+            font-size : 17px;
+        }
+        #navi>li>ul{
+            list-style-type: none;
+            padding: 0px;
+            display: none; /* 평소에 숨겨져있다가 마우스가 올라가는 순간 펼쳐지는 효과 1단계 */
+
+        }
+        #navi>li>a:hover+ul{
+            display: block; /* 2단계 */
+        }
+        #navi>li>ul:hover{
+            display: block; /* 3단계 */
+        }
+        #navi>li>ul a{font-size: 11px;}
+        #navi>li>ul a:hover{font-size: 14px;}
+        /* --------- navigator 영역 스타일 속성 끝 ---------------- */
+        /* ------------ logo 영역 스타일 속성 시작 -----------------*/
+        #header_1{
+            position: relative;
+        }
+        #logo{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            margin: auto;
+        }
+        /* ------------------------ */
+        #header_3{
+            position: relative;
+        }
+        #header_3>div{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            margin: auto;
+            height: 140px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        #header_3>div>ol a, #header_3>div>ol>li{
+            text-decoration: none;
+            color: steelblue;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        .wrap>(#header>#header_$*3)+#navigator+(#content>#content_$*3)
+        +#footer
+    -->
+    <div class="wrap">
+        <div id="header">
+            <div id="header_1">
+                <a href=""><img src="resources/image/kh_logo.jpg" alt="logo" id="logo"></a>
+            </div> <!-- 20 -->
+            <div id="header_2">
+                <form action="test.do" id="search_form">
+                    <div id="search_text">
+                        <input type="search" name="keyword">
+                    </div>
+                    <div id="search_btn">
+                        <input type="submit" value="검색">
+                    </div>
+                </form>
+            </div> <!-- 65 -->
+            <div id="header_3">
+                <div>
+                    <p>
+                        실시간 인기 교육과정
+                    </p>
+                    <ol>
+                        <li><a href="">Java</a></li>
+                        <li><a href="">Framework</a></li>
+                        <li><a href="">Front-End</a></li>
+                    </ol>
+                </div>
+            </div> <!-- 15 -->
+        </div>
+        <div id="navigator">
+            <ul id="navi">
+                <li><a href="">Java</a></li>
+                <li><a href="">Oracle</a></li>
+                <li>
+                    <a href="">Front-End</a>
+                    <ul>
+                        <li><a href="">HTML</a></li>
+                        <li><a href="">CSS</a></li>
+                        <li><a href="">JavaScript</a></li>
+                        <li><a href="">jQuery</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Server</a>
+                    <ul>
+                        <li><a href="">JDBC</a></li>
+                        <li><a href="">Servlet</a></li>
+                        <li><a href="">JSP</a></li>
+                        <li><a href="">Ajax</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Framework</a>
+                    <ul>
+                        <li><a href="">MyBatis</a></li>
+                        <li><a href="">Spring</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="content_1"></div> <!-- 15 -->
+            <div id="content_2"></div> <!-- 60 -->
+            <div id="content_3">
+                <div id="login_form">
+                    <!-- 2_1. 입력받을 input태그들이 존재할 영역 -->
+                    <form action="test.do" method="post" id="login_form_input"> <!-- get방법은 입력값이 url에 노출됨. -->
+                        <!-- 3_1. 왼쪽 : 아이디, 비밀번호를 입력받을 text 영역 -->
+                        <div id="login_input_id_pwd">
+                            <input type="text" name="userId" placeholder="아이디" required>
+                            <input type="password" name="userPwd" placeholder="비밀번호" required>
+                        </div>
+                        <!-- 3_2. 오른쪽 : 로그인버튼이 위치할 button 영역 -->
+                        <div id="login_input_btn">
+                            <input type="submit" value="로그인">
+                        </div>
+                    </form>
+                    <!-- 2_2. 회원가입, ID/PWD찾기 페이지 요청할 a태그들이 존재할 영역 -->
+                    <div id="login_form_etc">
+                        <a href="">회원가입</a>
+                        <a href="">아이디 / 비밀번호 찾기</a>
+                    </div>
+                </div>
+            </div> <!-- 25 -->
+        </div>
+        <div id="footer">
+            <div id="footer_1">
+                <a href="#">이용약관</a> |
+                <a href="#">개인정보취급방침</a> |
+                <a href="#">인재채용문의</a> |
+                <a href="#">고객센터</a> |
+            </div>
+            <div id="footer_2">
+                <p id="p1">
+                    강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩<br>
+                    강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩<br>
+                    강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩<br>
+                    종로지원 : 서울특별시 중구 남대문로  120 대일빌딩<br>
+                    당산지원 : 서울특별시 영등포구 선유동2로 57 이레빌딩
+                </p>
+                <p id="p2">
+                    Copyfight @ 1998-2021 KH Information Educational Institute All Right Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

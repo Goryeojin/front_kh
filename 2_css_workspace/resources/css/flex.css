@@ -1,0 +1,39 @@
+body{
+    background-color: rgba(47, 255, 57, 0.616);
+}
+
+.main-text{
+    text-align: center;
+    background-color: rgb(218, 250, 218);
+    font-size : 48px;
+    color : yellowgreen;
+    font-style: oblique;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.main-content{
+    margin-top : 50px;
+    display: flex;
+}
+.thumbnail-image{
+    width : 200px;
+    height : 220px;
+}
+.thumbnail-list{
+    list-style: none;
+    margin-left : 60px;
+    padding : 0 30px;
+}
+.thumbnail-title{
+    display : block;
+    text-align: center;
+    background-color: paleturquoise;
+    padding : 5px 10px;
+    font-size : 18px;
+    height: 25px;
+    color: rgb(253, 139, 119);
+}
+.thumbnail-item:hover{
+    transition : transform 850ms ease-in-out;
+    transform: scale(1.3);
+}

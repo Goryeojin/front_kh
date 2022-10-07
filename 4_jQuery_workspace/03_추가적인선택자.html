@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>추가적인 선택자</title>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+    <style>
+        .pinkStyle{
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <h1>추가적인 선택자</h1>
+
+    <h3>* 자손선택자(>)와 후손선택자( )</h3>
+
+    <div style="border: 1px solid pink;">
+        <ul>div의 자손요소1 / li의 부모요소 / h3의 조상요소
+            <li>div의 후손요소 / ul의 자손요소1</li>
+            <li>div의 후손요소 / ul의 자손요소2</li>
+            <li class="ch">div의 후손요소 / ul의 자손요소3</li>
+            <li class="ch">div의 후손요소 / ul의 자손요소4</li>
+            <li>div의 후손요소 / ul의 자손요소5 / h3의 부모요소
+                <h3>div,ul의 후손요소 / li의 자손요소1</h3>
+                <h4>div,ul의 후손요소 / li의 자손요소2</h4>
+            </li>
+        </ul>
+
+        <li>1
+            <h3>ㅎㅎ</h3>
+            <h4>하하</h4>
+        </li>
+        <li>2
+            <h3>하하</h3>
+            <ul>
+                <h4>히히</h4>
+            </ul>
+        </li>
+        <li>3
+            <h3>히히</h3>
+            <h4>ㅎㅎ</h4>
+        </li>
+        <h3>div의 자손요소2</h3>
+        <h3 class="ch">div의 자손요소3</h3>
+    </div>
+
+    <script>
+        $(function(){
+            // div의 자손들 중에서 h3 요소들만 선택
+            $('div>h3').css('color', 'skyblue'); // div 자손들 중에서 h3요소들만 선택
+            $('div h3').css('background', 'violet'); // div 후손들 중에서 h3요소들만 선택
+
+            $('li>h3').css('color','white'); // li 자식 중 h3
+            $('ul h3').css('color','black'); // ul 후손 중 h3
+            $('ul>li>h4').css('color','red');
+
+            // ul의 자손 중에서 클래스 명이 ch인 요소들만 선택
+            $('ul>.ch').css('background', 'yellow');
+
+            // li중에서 클래스 명이 ch인 태그들만 선택하겠다.
+            $('li.ch').css('color', 'yellowgreen');
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 속성선택자</h3>
+    <p>
+        선택자[속성] : 특정 속성을 가지고 있는 모든 요소 선택<br>
+        선택자[속성=속성값] : 속성값이 특정값과 "일치"하는 모든 요소 선택<br>
+        선택자[속성~=속성값] : 속성값에 특정값을 "포함"하는 요소 선택(공백 기준) <br>
+        선택자[속성^=속성값] : 속성값에 특정값으로 "시작"하는 모든 요소 선택 <br>
+        선택자[속성$=속성값] : 속성값이 특정값으로 "끝"나는 모든 요소 선택<br>
+        선택자[속성*=속성값] : 속성값에 특정값을 "포함"하는 요소 선택<br>
+    </p>
+
+    <input type="text"><br>
+    <input type="number" class="test test3 test4 test1"><br>
+    <input type="radio"><br>
+    <input type="checkbox"><br>
+    <input type="button" value="button" class="test2"><br>
+
+    <script>
+        /*
+        $(function(){
+            $('input[class]').css('background', 'lightpink');
+
+            $('input[type=text]').val('안녕~'); // jQuery 방식으로는 value 가 아니라 val
+            $('input[class~=test').val('1234');
+            // .val() : value속성과 관련된 기능 수행
+            // css() / html()
+
+            $('input[type^=ra]').attr('checked', true);
+            $('input[type$=box]').attr('checked', true);
+            // .attr() : 그 이외의 속성들과 관련된 기능 수행
+
+            $('input[class*=st2').css('width', '100px');
+            $('input[class*=st2').css('height', '100px');
+            $('input[class*=st2').val('버튼');
+
+            // 메소드체이닝 => 다음과 같이 연속으로 메소드를 호출해서 쓸 수 있다.
+            $('input[class*=st2').css('width', '50px').css('height', '50px').val('button');
+        })
+        */
+    </script>
+
+    <hr>
+
+    <h3>* 입력양식 선택자 (input 태그 type 속성에 따라서도 요소 선택)</h3>
+    <pre>
+        [표현법]
+        :type속성값 
+
+        :text, :radio, :number, :checkbox, ...
+    </pre>
+
+    텍스트 상자 : <input type="text"><br>
+    일반버튼 : <input type="button"><br>
+    체크박스 : <input type="checkbox"><br>
+    첨부파일 : <input type="file"><br>
+    비밀번호 : <input type="password"><br>
+    라디오버튼 : <input type="radio"><br>
+    초기화버튼 : <input type="reset"><br>
+    제출 : <input type="submit" id="submit1"><br>
+
+    <script>
+        $(function(){
+            // $(':text').css('background', 'red');
+
+            // $(':button').css('width','200px').css('height','200px').val('왕버튼');
+            // $(':button').css({width: '200px', height:'200px'}).val('왕버튼');
+            // 부여하고자 하는 스타일에 대해 객체 형태로 묶어서 써도 된다.
+
+            $(':checkbox').attr('checked', true);
+
+            $(':file').css('background', 'yellowgreen');
+
+            $(':password').css('background','yellow');
+
+            $(':radio').attr('checked', true).css({width: '50px', height: '50px'});
+
+            $(':reset').css({
+                background:'blue',
+                color:'white',
+                border:'none'
+            });
+
+            $(':submit').click(function(){
+                // alert('zzz');
+
+                // 비밀번호 입력란에 있는 값을 경고창으로 띄워보기
+                // alert($(':password').val());
+                // .val() : 인자값 없이 메소드를 호출하면 해당 값을 불러오는 역할
+                // 자바로 따지면 getter. setter 역할을 동시에 함
+            });
+
+            // mouseenter : 요소의 경계 안으로 들어갈 때
+            $(':submit').mouseenter(function(){
+
+                // $(':submit').css('background', 'pink');
+                // window.event.target == e.target == this
+                // $(this).css('background', 'pink'); // 현재 이벤트가 발생한 요소
+
+                // 고급 기술 : 직전 css()호출해서 스타일을 부여하는 것이 아닌
+                //              클래스 속성값을 추가해서 이미 정의된 스타일을 입히기
+                // 자바스크립트 방식
+                // document.getElementById('submit1').className = 'pinkStyle';
+
+                // jQuery
+                $(this).addClass('pinkStyle');
+                // .addClass() : 선택된 요소에 클래스 속성을 추가해주는 메소드
+            });
+
+            // mouseout : 요소의 경계 밖으로 나갈 때
+            $(':submit').mouseout(function(){
+                $(this).removeClass('pinkStyle');
+            });
+
+            // hover : mouseenter + mouseout
+            $(':submit').hover(function(){ // mouseenter (handlerIn)
+                $(this).addClass('pinkStyle');
+            }, function(){ // mouseout (handlerOut)
+                $(this).removeClass('pinkStyle');
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 상태선택자</h3>
+    <!-- 
+        checked, selected, enabled, disabled
+    -->
+
+    <h4>- checked 상태 선택자 (radio, checkbox)</h4>
+    <p>
+        체크되어있는 입력 양식 태그를 선택<br>
+        $('input:checked')
+    </p>
+
+    취미 :
+    <input type="checkbox" name="hobby" value="애니보기">애니보기
+    <input type="checkbox" name="hobby" value="애보기">애보기
+    <input type="checkbox" name="hobby" value="당근마켓하기">당근마켓하기
+    <br>
+
+    <button id="btn1">너 취미가 뭐니?</button>
+
+    <script>
+        $(function(){
+            // 버튼 클릭 시 현재 checked된 요소만 선택해서 스타일 부여
+            $('#btn1').click(function(){
+
+                // $('input:checked').css({width:'50px', height:'50px'});
+
+                // 자바스크립트 방식으로
+                // 버튼클릭 시 현재 checked된 요소만 선택해서 alert로
+                // 당신의 취미는 xx 군요? 형식으로 출력
+                var checked = document.getElementsByName('hobby');
+
+                var str = '';
+                for(var i=0; i<checked.length; i++){
+                    if(checked[i].checked){
+                        str += checked[i].value + (i+1) + ' ';
+                    }
+                }
+
+                alert('당신의 취미는 ' + str + '이군요?');
+                console.log(str);
+            });
+        })
+    </script>
+
+    <h4>- selected 상태 선택자(select>option)</h4>
+    <p>
+        option 요소 객체 중 선택된 태그를 선택<br>
+        $('option:selected')
+    </p>
+
+    국가 : 
+    <select name="national">
+        <option value="x">선택안함</option>
+        <option value="ko">한국</option>
+        <option value="us">미국</option>
+        <option value="uk">영국</option>
+    </select>
+
+    <button onclick="test();">확인</button>
+
+    <br>
+
+    선택된 나라 : <label id="result">없음</label>
+
+    <script>
+        function test(){
+            // 현재 선택된 목록을 가져옴(selected)
+            console.log($('option:selected').val());
+            console.log($('option:selected').html());
+
+            // $('#result').html($('option:selected').html());
+
+            document.getElementById('result').innerHTML = $('option:selected').html();
+            // 같이 사용 가능
+        }
+    </script>
+
+    <hr>
+
+    <h4>- enabled, disabled 상태(input, button, textarea...) 선택자</h4>
+    <p>
+        활성화/비활성화 된 요소 선택<br>
+        #아이디명 > :enabled <br>
+        #아이디명 > :disabled <br>
+        .클래스명 > :enabled <br>
+        .클래스명 > :disabled <br>
+    </p>
+    
+    <div id="wrap">
+        활성화 텍스트 상자 : <input type="text"><br>
+        비활성화 텍스트 상자 : <input type="text" disabled><br>
+
+        활성화 텍스트 상자 : <input type="button"><br>
+        비활성화 텍스트 상자 : <input type="button" disabled><br>
+    </div>
+
+    <script>
+        $(function(){
+
+            $('#wrap>:enabled').css('background', 'yellowgreen');
+            $('#wrap>:disabled').css('background', 'orangered');
+        })
+    </script>
+
+</body>
+</html>

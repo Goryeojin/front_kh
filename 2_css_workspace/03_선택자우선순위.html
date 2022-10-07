@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>선택자 우선순위</title>
+    <style>
+        h1 {
+            background-color: rgb(161, 255, 255);
+            color: pink;
+        }
+        h1 {
+            color : darkolivegreen; /* 같은 스타일 속성에 대해서 덮어씌워짐 */
+        }
+        #id1 { /* 아이디 선택자보다 인라인 스타일 방식이 우선순위가 더 높다 */
+            background-color: dodgerblue;
+        }
+        .class1 { /* 클래스 선택자보다 인라인 스타일 방식이 우선순위가 더 높다 */
+            background-color: fuchsia;
+            color:yellowgreen;
+        }
+        div {
+            /* 우선순위가 낮더라도 !important 키워드를 붙이면 우선적으로 적용 */
+            background-color: teal !important;
+            color: slategrey !important;
+            width: 200px;
+            height: 200px; /* 우선순위가 낮더라도 위에서 width, height 속성을 지정하지 않았기 때문에 스타일 적용*/
+        }
+        h1{
+            color:snow !important;
+            background-color: springgreen;
+        }
+        .class2{
+            background-color: steelblue;
+        }
+        #id2{
+            color: violet;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="id2" class="class2">선택자 우선 순위</h1>
+
+    <p>
+        기본적으로 css는 스타일이 위에서 아래 순서로 적용됨 <br>
+        동일한 요소를 다양한 선택자로 css가 부여된 경우 우선순위에 따라 적용됨 <br><br>
+
+        선택자 우선순위 (높은순) <br>
+        1. !important <br>
+        2. 인라인 스타일 방식 <br>
+        3. 아이디 선택자 <br>
+        4. 클래스 선택자 <br>
+        5. 태그 선택자
+    </p>
+
+
+    <div id="id1" class="class1" style="background-color: rgb(241, 158, 128); color: khaki;">
+        우선순위 테스트
+    </div>
+    
+</body>
+</html>

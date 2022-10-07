@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>문자열과 숫자</title>
+    <style>
+        .area{
+            width: 300px;
+            border: 1px solid black;
+        }
+        .small{
+            height: 200px;
+        }
+        .big{
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <h1>문자열과 숫자</h1>
+    <h3>* 문자열 관련 메소드</h3>
+
+    <button onclick="showStringMethod();">문자열 처리 메소드</button>
+
+    <div id="area1" class="area big"></div>
+
+    <script>
+        function showStringMethod(){
+
+            var str1 = 'Hello World!';
+
+            var area1 = document.getElementById('area1');
+            // div. => div가 가지고 있는 속성 불러오기
+            area1.innerHTML = 'str1 : ' + str1 + '<br>';
+            area1.innerHTML += '문자열의 길이 : ' + str1.length + '<br>';
+            area1.innerHTML += 'toUpperCase() : ' + str1.toUpperCase() + '<br>';
+            area1.innerHTML += 'toLowerCase() : ' + str1.toLowerCase() + '<br>';
+
+            for(var i=0; i<str1.length; i++){
+                area1.innerHTML += i + '번째 인덱스 : ' + str1.charAt(i) + '<br>';
+            }
+            area1.innerHTML += '앞에서부터의 첫 l의 위치(인덱스) : ' + str1.indexOf('l') + '<br>';
+            area1.innerHTML += '뒤에서부터의 첫 l의 위치(인덱스) : ' + str1.lastIndexOf('l') + '<br>';
+            // 해당 문자가 존재하지 않을 경우에는 -1을 반환
+            area1.innerHTML += '앞에서부터의 첫 a의 위치(인덱스) : ' + str1.indexOf('a') + '<br>';
+            
+            area1.innerHTML += 'substring(시작인덱스) : ' + str1.substring(6) + '<br>';
+            area1.innerHTML += 'substring(시작인덱스, 끝인덱스-1) : ' + str1.substring(6, 8) + '<br>';
+
+            var str2 = '사과,바나나,복숭아,키위';
+            var fruits = str2.split(','); // ['사과','바나나','복숭아','키위']
+
+            area1.innerHTML += 'fruits : ' + fruits + '<br>';
+            area1.innerHTML += 'fruits의 자료형 : ' + typeof(fruits);
+        }
+    </script>
+
+    <hr>
+
+    <h3>*숫자(수학) 관련 메소드</h3>
+
+    <button onclick="showMathMethod();">수학 관련 메소드</button>
+    <div id="area2" class="area small"></div>
+
+    <script>
+        function showMathMethod(){
+
+            var area2 = document.getElementById('area2');
+
+            // Math 내장객체 제공
+            area2.innerHTML = '절대값 : ' + Math.abs(-123) + '<br>';
+            area2.innerHTML += '랜덤값 : ' + Math.random() + '<br>';
+            area2.innerHTML += '반올림 : ' + Math.round(123.456) + '<br>';
+            area2.innerHTML += '버림 : ' + Math.floor(123.999) + '<br>';
+            area2.innerHTML += '올림 : ' + Math.ceil(123.111) + '<br>';
+            area2.innerHTML += '제곱근 : ' + Math.sqrt(4) + '<br>';
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 다른 자료형끼리의 연산</h3>
+
+    <button onclick="window.arithmetic();">산술연산</button>
+    <div id="area3" class="area big"></div>
+
+    <script>
+        function arithmetic(){
+            // 덧셈 연산
+            var test1 = 7 + 7; // 14
+            var test2 = 7 + '7'; // 77
+            var test3 = '7' + 7; // 77
+            var test4 = '7' + 7 + 7; // 777
+
+            var area3 = document.getElementById('area3');
+            area3.innerHTML = 'test1 : ' + test1 + '<br>';
+            area3.innerHTML += 'test2 : ' + test2 + '<br>';
+            area3.innerHTML += 'test3 : ' + test3 + '<br>';
+            area3.innerHTML += 'test4 : ' + test4 + '<br>';
+            
+            // 그 이외의 산술연산 : 문자열이 숫자로 자동형변환된 뒤 산술연산됨
+            // 단, 이때 문자열이 반드시 숫자로 존재해야함!
+            // => 숫자가 아닌 문자가 포함될 경우 NaN문구가 뜸(Not a Number)
+            var test5 = '7' - 7; // 0
+            var test6 = '7' * 7; // 49
+            var test7 = '7' / 7; // 1
+            area3.innerHTML += 'test5 : ' + test5 + '<br>';
+            area3.innerHTML += 'test6 : ' + test6 + '<br>';
+            area3.innerHTML += 'test7 : ' + test7 + '<br>';
+            
+            // 강제형변환(문자열 => 숫자)
+            // Number(문자열)
+            // parseInt(문자열)
+            // parseFloat(문자열)
+            
+            var iNum = 2; // 숫자
+            var sNum = '3'; // 문자
+            
+            var test8 = iNum + sNum; // 23
+            var test9 = iNum + Number(sNum); // 5
+            var test10 = iNum + parseInt(sNum); // 5
+            var test11 = iNum + parseFloat(sNum); // 5
+            area3.innerHTML += 'test8 : ' + test8 + '<br>';
+            area3.innerHTML += 'test9 : ' + test9 + '<br>';
+            area3.innerHTML += 'test10 : ' + test10 + '<br>';
+            area3.innerHTML += 'test11 : ' + test11 + '<br>';
+            
+            // parseInt vs parseFloat
+            var fNum = '1.234';
+            
+            var test12 = iNum + fNum; // 21.234
+            var test13 = iNum + Number(fNum); // 숫자 계산이 잘 됨 => 3.234
+            var test14 = iNum + parseInt(fNum); // '1.234' => 1(버림)
+            var test15 = iNum + parseFloat(fNum); // '1.234' => 1.234 (실수)
+            area3.innerHTML += 'test12 : ' + test12 + '<br>';
+            area3.innerHTML += 'test13 : ' + test13 + '<br>';
+            area3.innerHTML += 'test14 : ' + test14 + '<br>';
+            area3.innerHTML += 'test15 : ' + test15 + '<br>';
+        }
+    </script>
+
+    <hr>
+
+    <h3>☆ 간단한 문제 ★</h3>
+
+    <fieldset>
+        <legend>★ 문제 ☆</legend>
+        <h3>input 태그에 값을 입력하고 버튼을 클릭하였을 때 값이 숫자인지 아닌지 출력해주세요</h3>
+
+        <h5>값이 숫자라면 => "숫자입니다" / 숫자가 아니라면 => "숫자가 아닙니다"를 alert로 출력</h5>
+        <input type="text" id="q_num">
+        <button onclick="test();">정답은?</button>
+    </fieldset>
+
+    <script>
+        function test(){
+
+            var input = document.getElementById('q_num').value;
+
+            if(input*0 == 0){
+                alert("숫자입니다");
+            }
+            else{
+                alert("숫자가 아닙니다");
+            };
+
+            if(input == Number(input)){};
+        }
+    </script>
+
+    <hr>
+
+    <h3>계산기</h3>
+    <p>
+        정수1 : <input type="text" id="num1"> <br>
+        정수2 : <input type="text" id="num2"> <br>
+        <span id="span1"></span><br>
+        <button onclick="add();">덧셈</button>
+        <button onclick="minus();">뺄셈</button> <br>
+    </p>
+
+    <script>
+        function add(){
+            var divEl = document.getElementById('span1');
+
+            divEl.innerHTML = (Number(num1.value)+Number(num2.value));
+        }
+        function minus(){
+            document.getElementById('span1').innerHTML = (Number(num1.value)-Number(num2.value));
+        }
+    </script>
+
+</body>
+</html>
