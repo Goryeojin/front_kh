@@ -91,7 +91,7 @@
             var test2 = 7 + '7'; // 77
             var test3 = '7' + 7; // 77
             var test4 = '7' + 7 + 7; // 777
-
+            
             var area3 = document.getElementById('area3');
             area3.innerHTML = 'test1 : ' + test1 + '<br>';
             area3.innerHTML += 'test2 : ' + test2 + '<br>';
@@ -101,6 +101,7 @@
             // 그 이외의 산술연산 : 문자열이 숫자로 자동형변환된 뒤 산술연산됨
             // 단, 이때 문자열이 반드시 숫자로 존재해야함!
             // => 숫자가 아닌 문자가 포함될 경우 NaN문구가 뜸(Not a Number)
+            var testT = 7 - '7'; // 0
             var test5 = '7' - 7; // 0
             var test6 = '7' * 7; // 49
             var test7 = '7' / 7; // 1
